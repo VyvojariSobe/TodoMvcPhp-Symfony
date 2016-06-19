@@ -1,11 +1,11 @@
 # TodoMvcPhp-Symfony
 
-To Do list MVC example written in Symfony 3.
+To Do list MVC example written in PHP in Symfony 3 framework.
 
 ## Instalation
 
 ```
-composer create-project vyvojarisobe/todomvc-symfony
+composer create-project vyvojarisobe/todomvcphp-symfony
 ```
 
 ### Database

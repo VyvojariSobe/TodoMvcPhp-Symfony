@@ -1,6 +1,29 @@
 {
   "name": "vyvojarisobe/todomvcphp-symfony",
-  "license": "proprietary",
+  "description": "To Do list MVC example written in PHP in Symfony 3 framework.",
+  "keywords": [
+    "todo",
+    "mvc",
+    "todomvc",
+    "php",
+    "symfony",
+    "symfony 3",
+    "example"
+  ],
+  "homepage": "https://github.com/VyvojariSobe/TodoMvcPhp-Symfony",
+  "license": [
+    "BSD",
+    "GPL-2.0",
+    "GPL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "Dennis Fridrich",
+      "email": "fridrich.dennis@gmail.com",
+      "homepage": "http://www.defr.cz",
+      "role": "Author"
+    }
+  ],
   "type": "project",
   "autoload": {
     "psr-4": {

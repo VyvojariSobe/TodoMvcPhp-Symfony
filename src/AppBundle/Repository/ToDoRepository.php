@@ -27,7 +27,6 @@ class ToDoRepository extends \Doctrine\ORM\EntityRepository
         }
 
         $qb = $this->createQueryBuilder('t')
-            ->orderBy('t.isDone', 'asc')
             ->addOrderBy('t.createdAt', 'desc');
 
         if ($filter == self::FILTER_ACTIVE) {

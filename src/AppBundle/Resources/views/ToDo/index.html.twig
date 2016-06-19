@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="cs">
+<head>
+    <base href="{{ app.request.basePath }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{% if title is defined %}{{ title }} | {% endif %}TodoMVC</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/index.css') }}">
+</head>
+<body>
+<section class="todoapp">
+    {% for type, messages in app.session.flashBag.all %}
+        {% for message in messages %}
+            <div class="flash {{ type }}">{{ message }}</div>
+        {% endfor %}
+    {% endfor %}
+
+    <header class="header">
+        <a href="{{ path('todos') }}"><h1>todos</h1></a>
+        {{ form(newForm) }}
+    </header>
+
+    <section class="main">
+        <label for="toggle-all">Mark all as complete</label>
+
+        <ul class="todo-list">
+            {% for todo in totos %}
+                <li class="{{ todo.isDone ? "completed" }}">
+                    <div class="view">
+                        <a href="{{ path('todos_change_status', {'id': todo.id, 'status': todo.isDone ? 'uncheck' : 'check', 'filter': app.request.get('filter')}) }}">
+                            <svg class="toggle" xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                 viewBox="-10 -18 100 135">
+                                <circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"></circle>
+                                {% if todo.isDone %}
+                                    <path fill="#5dc2af"
+                                          d="M72 25L42 71 27 56l-4 4 20 20 34-52z"></path>
+                                {% endif %}
+                            </svg>
+                        </a>
+                        <label>{{ todo }}</label>
+                        <a href="{{ path('todos_remove', {'id': todo.id}) }}" class="btn destroy"></a>
+                    </div>
+                    {#{form editForm-$todo->id}#}
+                    {#<input name="value" class="edit" value="{{ todo }}">#}
+                    {#{/form}#}
+                    {{ form(editForms[todo.id]) }}
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <footer class="footer">
+        <span class="todo-count">
+          <strong>{{ active }}</strong> item left
+        </span>
+        <ul class="filters">
+            {% for filter, title in filters %}
+                <li>
+                    <a href="{{ path('todos', {'filter': filter}) }}"{% if app.request.get('filter') == filter %} class="selected"{% endif %}>{{ title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        {% if completed > 0 %}
+            <a href="{{ path('todos_clear_completed') }}" class="btn clear-completed">Clear completed</a>
+        {% endif %}
+    </footer>
+</section>
+<footer class="info">
+    <p>Double-click to edit a todo</p>
+    <p>Created by <a href="http://github.com/dfridrich">dfridrich</a></p>
+</footer>
+
+<script src="{{ asset('assets/js/jquery-3.0.0.min.js') }}"></script>
+<script src="{{ asset('assets/js/index.js') }}"></script>
+</body>
+</html>

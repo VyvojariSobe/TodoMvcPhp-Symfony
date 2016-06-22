@@ -26,6 +26,11 @@ class ToDoController extends Controller
      * })
      * @Template()
      * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     * @param         $filter
+     *
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function indexAction(Request $request, $filter)
     {

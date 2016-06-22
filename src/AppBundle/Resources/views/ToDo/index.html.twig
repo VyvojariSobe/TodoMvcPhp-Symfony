@@ -40,9 +40,6 @@
                         <label>{{ todo }}</label>
                         <a href="{{ path('todos_remove', {'id': todo.id}) }}" class="btn destroy"></a>
                     </div>
-                    {#{form editForm-$todo->id}#}
-                    {#<input name="value" class="edit" value="{{ todo }}">#}
-                    {#{/form}#}
                     {{ form(editForms[todo.id]) }}
                 </li>
             {% endfor %}
